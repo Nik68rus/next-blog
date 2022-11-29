@@ -9,6 +9,7 @@ export const DUMMY_POSTS: IPost[] = [
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, labore fuga nemo officia ut delectus maiores asperiores nostrum sit nisi.',
     date: '2022-02-10',
     content: '# This is a first post',
+    isFeatured: true,
   },
   {
     slug: 'getting-started-with-nextjs2',
@@ -18,6 +19,7 @@ export const DUMMY_POSTS: IPost[] = [
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, labore fuga nemo officia ut delectus maiores asperiores nostrum sit nisi.',
     date: '2022-02-10',
     content: '# This is a first post',
+    isFeatured: false,
   },
   {
     slug: 'getting-started-with-nextjs3',
@@ -27,5 +29,6 @@ export const DUMMY_POSTS: IPost[] = [
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, labore fuga nemo officia ut delectus maiores asperiores nostrum sit nisi.',
     date: '2022-02-10',
     content: '# This is a first post',
+    isFeatured: true,
   },
 ];

@@ -1,18 +1,29 @@
 import React from 'react';
 import FeaturedPosts from '../components/home-page/featured-posts';
 import Hero from '../components/home-page/hero';
-import { DUMMY_POSTS } from '../data';
+import { getFeaturedPosts } from '../helpers/post-util';
 import { IPost } from '../types';
 
-type Props = {};
+type Props = {
+  posts: IPost[];
+};
 
-function HomePage({}: Props) {
+function HomePage({ posts }: Props) {
   return (
     <>
       <Hero />
-      <FeaturedPosts posts={DUMMY_POSTS} />
+      <FeaturedPosts posts={posts} />
     </>
   );
 }
 
+export const getStaticProps = async () => {
+  const featuredPosts = getFeaturedPosts();
+
+  return {
+    props: {
+      posts: featuredPosts,
+    },
+  };
+};
 export default HomePage;

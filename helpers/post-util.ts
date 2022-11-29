@@ -1,3 +1,4 @@
+import { IPost, IPostMeta } from './../types/index';
 import fs from 'fs';
 import path from 'path';
 
@@ -5,29 +6,26 @@ import matter from 'gray-matter';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
-interface PostMeta {
-  title: string;
-  date: string;
-  image: string;
-  excerpt: string;
-  isFeatured: boolean;
-}
-
-const getPostData = (fileName: string) => {
-  const filePath = path.join(postsDirectory, fileName);
+export const getPostData = (fileIdentifier: string) => {
+  const postSlug = fileIdentifier.replace(/\.md$/, ''); //removes extension
+  const filePath = path.join(postsDirectory, `${postSlug}.md`);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const data = matter(fileContent).data as PostMeta;
+  const data = matter(fileContent).data as IPostMeta;
   const content = matter(fileContent).content;
 
-  const postSlug = fileName.replace(/\.md$/, ''); //removes extension
-
-  const postData = {
+  const postData: IPost = {
     slug: postSlug,
     ...data,
     content,
   };
 
   return postData;
+};
+
+export const getSlugs = () => {
+  const postFiles = fs.readdirSync(postsDirectory);
+  const postSlugs = postFiles.map((fileName) => fileName.replace(/\.md$/, '')); //removes extension
+  return postSlugs;
 };
 
 export const getAllPosts = () => {

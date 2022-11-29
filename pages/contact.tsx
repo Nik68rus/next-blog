@@ -1,9 +1,10 @@
 import React from 'react';
+import ContactForm from '../components/contact/contact-form';
 
 type Props = {};
 
 function ContactPage({}: Props) {
-  return <div>ContactPage</div>;
+  return <ContactForm />;
 }
 
 export default ContactPage;
