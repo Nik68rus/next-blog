@@ -1,4 +1,5 @@
 import { GetServerSideProps, GetStaticProps } from 'next';
+import Head from 'next/head';
 import { ParsedUrlQuery } from 'querystring';
 import React from 'react';
 import PostContent from '../../components/posts/post-detail/post-content';
@@ -15,7 +16,15 @@ interface Params extends ParsedUrlQuery {
 }
 
 function PostDetailPage({ post }: Props) {
-  return <PostContent post={post} />;
+  return (
+    <>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.excerpt} />
+      </Head>
+      <PostContent post={post} />;
+    </>
+  );
 }
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (

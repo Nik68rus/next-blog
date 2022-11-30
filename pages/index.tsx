@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React from 'react';
 import FeaturedPosts from '../components/home-page/featured-posts';
 import Hero from '../components/home-page/hero';
@@ -11,6 +12,10 @@ type Props = {
 function HomePage({ posts }: Props) {
   return (
     <>
+      <Head>
+        <title>NextJS Blog - Home</title>
+        <meta name="description" content="Blog developed with NextJS" />
+      </Head>
       <Hero />
       <FeaturedPosts posts={posts} />
     </>
